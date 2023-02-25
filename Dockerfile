@@ -25,9 +25,11 @@ USER root
 ADD https://raw.githubusercontent.com/crops/extsdk-container/master/restrict_useradd.sh  \
         https://raw.githubusercontent.com/crops/extsdk-container/master/restrict_groupadd.sh \
         https://raw.githubusercontent.com/crops/extsdk-container/master/usersetup.py \
+        https://raw.githubusercontent.com/openembedded/openembedded-core/master/scripts/oe-git-proxy \
         /usr/bin/
 COPY distro-entry.sh poky-entry.py poky-launch.sh /usr/bin/
 COPY sudoers.usersetup /etc/
+RUN chmod +x /usr/bin/oe-git-proxy
 
 # For ubuntu, do not use dash.
 RUN which dash &> /dev/null && (\
